@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Basten Gaming PES Update Center</title>
 
 <style>
+
+*{
+box-sizing:border-box;
+}
 
 body { 
 font-family: Arial, sans-serif; 
@@ -15,6 +22,7 @@ background-position: center;
 background-attachment: fixed;
 }
 
+
 .container { 
 max-width: 700px; 
 margin: auto;
@@ -24,49 +32,55 @@ border-radius: 15px;
 box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
+
 input, button { 
-padding: 8px; 
-margin-top: 10px; 
+padding: 10px; 
+margin-top: 10px;
+font-size:16px;
+width:100%;
 }
+
 
 button {
 cursor:pointer;
+border:none;
+border-radius:5px;
 }
+
 
 #portal { 
 display:none; 
-margin-top:20px; 
+margin-top:20px;
 }
 
-@media (max-width: 600px) {
 
-body {
-    margin: 15px;
-    background-position: center;
+
+@media (max-width:600px){
+
+body{
+margin:15px;
+background-attachment:scroll;
 }
 
-.container {
-    width: auto;
-    padding: 20px;
-    border-radius: 12px;
+
+.container{
+width:100%;
+padding:20px;
 }
 
-h2 {
-    font-size: 22px;
+
+h2{
+font-size:22px;
 }
 
-h3 {
-    font-size: 16px;
+
+h3{
+font-size:17px;
 }
 
-input {
-    width: 100%;
-    box-sizing: border-box;
+
 }
 
-button {
-    width: 100%;
-}
 
 </style>
 
@@ -91,6 +105,7 @@ button {
 <p>Masukkan email pembelian Anda.</p>
 
 
+
 <p style="color:red;">
 
 <b>PERHATIAN:</b><br>
@@ -101,9 +116,12 @@ Sebelum download, pastikan browser Chrome/Google Anda sudah login menggunakan ak
 
 Contoh:<br>
 
-Email pembelian: <b>namaanda@gmail.com</b><br>
+Email pembelian: <b>namaanda@gmail.com</b>
 
-Maka Chrome harus login menggunakan akun Google: <b>namaanda@gmail.com</b>
+<br>
+
+Maka Chrome harus login menggunakan akun Google:
+<b>namaanda@gmail.com</b>
 
 </p>
 
@@ -116,9 +134,6 @@ Maka Chrome harus login menggunakan akun Google: <b>namaanda@gmail.com</b>
 
 
 </div>
-
-
-
 
 
 <div id="portal">
@@ -146,32 +161,21 @@ Maka Chrome harus login menggunakan akun Google: <b>namaanda@gmail.com</b>
 
 
 <p>
-
 <a id="downloadLink" href="#" target="_blank">
-
 DOWNLOAD UPDATE GOOGLE DRIVE
-
 </a>
-
 </p>
 
 
-
 <hr>
-
 
 
 <p><b>CUSTOMER NOTICE</b></p>
 
 
 <p>
-
 Produk hanya dapat diakses oleh email pembelian yang terdaftar.
-
 </p>
-
-
-
 <p style="color:#555;">
 
 <b>Catatan Google Drive Restricted:</b><br>
@@ -192,10 +196,7 @@ Produk hanya dapat diakses oleh email pembelian yang terdaftar.
 
 
 
-
-
 <script>
-
 
 
 const members = {
@@ -243,27 +244,35 @@ const downloadLinks = {
 
 
 'PES 2021 Dual Mode 100 Legend':
+
 'https://drive.google.com/link1',
 
 
+
 'PES 2021 Dual Mode 300 Legend':
+
 'https://drive.google.com/link2',
 
 
+
 'PES 2021 Dual Mode 500 Legend':
+
 'https://drive.google.com/drive/folders/1fjoYbpSv656Jp664exR1ixJr1q4pqJtT?usp=drive_link',
 
 
+
 'PES 2021 Full Edition V2':
+
 'https://drive.google.com/link4',
 
 
+
 'PES 2021 Super Option File V3.0':
+
 'https://drive.google.com/link5'
 
 
 };
-
 
 
 
@@ -307,11 +316,6 @@ document.getElementById('userValid').innerText=members[email][1];
 
 
 
-
-
-// AMBIL LINK SESUAI VARIANT
-
-
 document.getElementById('downloadLink').href =
 
 downloadLinks[members[email][0]];
@@ -325,6 +329,6 @@ downloadLinks[members[email][0]];
 </script>
 
 
-
 </body>
+
 </html>
