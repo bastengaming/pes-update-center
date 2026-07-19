@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Basten Gaming PES Update Center</title>
+
+<style>
+
+body { 
+font-family: Arial, sans-serif; 
+margin: 40px;
+background-image: url("bastengamingwallpaper.png");
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
+}
+
+.container { 
+max-width: 700px; 
+margin: auto;
+background: rgba(255,255,255,0.70);
+padding: 25px;
+border-radius: 15px;
+box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+input, button { 
+padding: 8px; 
+margin-top: 10px; 
+}
+
+button {
+cursor:pointer;
+}
+
+#portal { 
+display:none; 
+margin-top:20px; 
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h2>BASTEN GAMING</h2>
+
+<h3>PES UPDATE CENTER</h3>
+
+
+
+<div id="login">
+
+
+<p>Masukkan email pembelian Anda.</p>
+
+
+<p style="color:red;">
+
+<b>PERHATIAN:</b><br>
+
+Sebelum download, pastikan browser Chrome/Google Anda sudah login menggunakan akun Google dengan email yang sama dengan email pembelian.
+
+<br><br>
+
+Contoh:<br>
+
+Email pembelian: <b>namaanda@gmail.com</b><br>
+
+Maka Chrome harus login menggunakan akun Google: <b>namaanda@gmail.com</b>
+
+</p>
+
+
+
+<input type="email" id="email" placeholder="Email Pembelian">
+
+
+<button onclick="loginPortal()">LOGIN</button>
+
+
+</div>
+
+
+
+
+
+<div id="portal">
+
+
+<p><b>EMAIL :</b> <span id="userEmail"></span></p>
+
+<p><b>PRODUCT :</b> <span id="userProduct"></span></p>
+
+<p><b>VALID UNTIL :</b> <span id="userValid"></span></p>
+
+
+<hr>
+
+
+<p><b>LATEST UPDATE</b></p>
+
+<p>July Update 2026 Available</p>
+
+
+<hr>
+
+
+<p><b>DOWNLOAD UPDATE</b></p>
+
+
+<p>
+
+<a id="downloadLink" href="#" target="_blank">
+
+DOWNLOAD UPDATE GOOGLE DRIVE
+
+</a>
+
+</p>
+
+
+
+<hr>
+
+
+
+<p><b>CUSTOMER NOTICE</b></p>
+
+
+<p>
+
+Produk hanya dapat diakses oleh email pembelian yang terdaftar.
+
+</p>
+
+
+
+<p style="color:#555;">
+
+<b>Catatan Google Drive Restricted:</b><br>
+
+1. Login Google Chrome dengan akun email pembelian.<br>
+
+2. Pastikan akun Google yang aktif sesuai email pembelian.<br>
+
+3. Jika muncul "Minta Akses", cek kembali akun Google yang sedang login.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+
+const members = {
+
+
+'bastengaming@gmail.com':['PES 2021 Dual Mode 500 Legend','Winter 2027'],
+
+'venomphantom1@gmail.com':['PES 2021 Dual Mode 100 Legend','Winter 2027'],
+
+'irfantrisaputraa@gmail.com':['PES 2021 Dual Mode 300 Legend','Summer 2026'],
+
+'suhardycc@gmail.com':['PES 2021 Dual Mode 300 Legend','Winter 2027'],
+
+'siepkosigaming@gmail.com':['PES 2021 Dual Mode 500 Legend','Winter 2027'],
+
+'kennybasuki@gmail.com':['PES 2021 Full Edition V2','Winter 2027'],
+
+
+'arenacpt2a@gmail.com':['PES 2021 Super Option File V3.0','Winter 2027'],
+
+'falehendra@gmail.com':['PES 2021 Super Option File V3.0','Winter 2027'],
+
+'hobbypspekanbaru@gmail.com':['PES 2021 Super Option File V3.0','Winter 2027'],
+
+'trihaldyka@gmail.com':['PES 2021 Super Option File V3.0','Summer 2026'],
+
+'mey.4ndriansyah@gmail.com':['PES 2021 Super Option File V3.0','Winter 2027'],
+
+'babyboomers30@gmail.com':['PES 2021 Super Option File V3.0','Winter 2027'],
+
+'farchan.nuary@gmail.com':['PES 2021 Super Option File V3.0','Winter 2027'],
+
+'bambangboyanggriawan@gmail.com':['PES 2021 Super Option File V3.0','Winter 2027']
+
+
+};
+
+
+
+
+// LINK DOWNLOAD BERDASARKAN VARIANT PRODUK
+
+
+const downloadLinks = {
+
+
+'PES 2021 Dual Mode 100 Legend':
+'https://drive.google.com/link1',
+
+
+'PES 2021 Dual Mode 300 Legend':
+'https://drive.google.com/link2',
+
+
+'PES 2021 Dual Mode 500 Legend':
+'https://drive.google.com/drive/folders/1fjoYbpSv656Jp664exR1ixJr1q4pqJtT?usp=drive_link',
+
+
+'PES 2021 Full Edition V2':
+'https://drive.google.com/link4',
+
+
+'PES 2021 Super Option File V3.0':
+'https://drive.google.com/link5'
+
+
+};
+
+
+
+
+
+
+function loginPortal(){
+
+
+const email=document.getElementById('email').value.trim().toLowerCase();
+
+
+
+if(!members[email]){
+
+
+alert('Email tidak terdaftar.');
+
+
+return;
+
+
+}
+
+
+
+document.getElementById('login').style.display='none';
+
+
+document.getElementById('portal').style.display='block';
+
+
+
+
+document.getElementById('userEmail').innerText=email;
+
+
+document.getElementById('userProduct').innerText=members[email][0];
+
+
+document.getElementById('userValid').innerText=members[email][1];
+
+
+
+
+
+// AMBIL LINK SESUAI VARIANT
+
+
+document.getElementById('downloadLink').href =
+
+downloadLinks[members[email][0]];
+
+
+
+}
+
+
+
+</script>
+
+
+
+</body>
+</html>
