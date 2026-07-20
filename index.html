@@ -82,12 +82,101 @@ font-size:17px;
 }
 
 
+
+.youtube-widget{
+
+display:block;
+position:fixed;
+
+top:40px;
+right:40px;
+
+width:320px;
+
+padding:15px;
+
+background:rgba(255,255,255,0.70);
+
+border-radius:15px;
+
+box-shadow:0 0 20px rgba(0,0,0,0.3);
+
+text-align:center;
+
+z-index:999;
+
+}
+
+
+.youtube-widget h4{
+
+margin-top:0;
+margin-bottom:10px;
+font-size:18px;
+
+}
+
+
+.youtube-widget p{
+
+margin-top:0;
+margin-bottom:15px;
+font-size:14px;
+
+}
+
+
+.youtube-widget iframe{
+
+width:100%;
+height:180px;
+
+border:none;
+
+border-radius:10px;
+
+}
+
+
+
+/* Sembunyikan di HP */
+
+@media (max-width:767px){
+
+.youtube-widget{
+
+display:none;
+
+}
+
+}
+
+
 </style>
 
 </head>
 
 
 <body>
+
+<div class="youtube-widget">
+
+<h4>Official YouTube Channel</h4>
+
+<p>
+Basten Gaming Official Shop
+</p>
+
+<iframe
+src="https://www.youtube.com/embed/6mzICAWXTVw"
+title="Basten Gaming Official Shop"
+allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+
+</div>
+
+
 
 
 <div class="container">
