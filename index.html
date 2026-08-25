@@ -54,7 +54,6 @@ margin-top:20px;
 }
 
 
-
 @media (max-width:600px){
 
 body{
@@ -78,9 +77,7 @@ h3{
 font-size:17px;
 }
 
-
 }
-
 
 
 .youtube-widget{
@@ -138,7 +135,6 @@ border-radius:10px;
 }
 
 
-
 /* Sembunyikan di HP */
 
 @media (max-width:767px){
@@ -152,12 +148,71 @@ display:none;
 }
 
 
+/* PRODUCT CARD */
+
+.product-card{
+
+background:rgba(255,255,255,0.75);
+
+padding:15px;
+
+margin:15px 0;
+
+border-radius:10px;
+
+box-shadow:0 2px 8px rgba(0,0,0,0.15);
+
+}
+
+
+.product-title{
+
+font-size:17px;
+
+font-weight:bold;
+
+margin-bottom:10px;
+
+}
+
+
+.download-button{
+
+display:block;
+
+background:#1a73e8;
+
+color:white;
+
+text-decoration:none;
+
+text-align:center;
+
+padding:12px;
+
+border-radius:6px;
+
+font-weight:bold;
+
+margin-top:10px;
+
+}
+
+
+.download-button:hover{
+
+background:#1557b0;
+
+}
+
+
 </style>
 
 </head>
 
 
 <body>
+
 
 <div class="youtube-widget">
 
@@ -175,7 +230,6 @@ allowfullscreen>
 </iframe>
 
 </div>
-
 
 
 
@@ -216,55 +270,70 @@ Maka Chrome harus login menggunakan akun Google:
 
 
 
-<input type="email" id="email" placeholder="Email Pembelian">
+<input
+type="email"
+id="email"
+placeholder="Email Pembelian"
+>
 
 
-<button onclick="loginPortal()">LOGIN</button>
+<button onclick="loginPortal()">
+LOGIN
+</button>
 
 
 </div>
 
 
+
 <div id="portal">
 
 
-<p><b>EMAIL :</b> <span id="userEmail"></span></p>
-
-<p><b>PRODUCT :</b> <span id="userProduct"></span></p>
-
-<p><b>VALID UNTIL :</b> <span id="userValid"></span></p>
-
-
-<hr>
-
-
-<p><b>LATEST UPDATE</b></p>
-
-<p>PES 2020 Agustus Update & PES 2021 July Update 2026 Available</p>
-
-
-<hr>
-
-
-<p><b>DOWNLOAD UPDATE</b></p>
-
-
 <p>
-<a id="downloadLink" href="#" target="_blank">
-DOWNLOAD UPDATE GOOGLE DRIVE
-</a>
+<b>EMAIL :</b>
+<span id="userEmail"></span>
 </p>
 
 
 <hr>
 
 
-<p><b>CUSTOMER NOTICE</b></p>
+<p>
+<b>YOUR PRODUCTS</b>
+</p>
+
+
+<div id="productList"></div>
+
+
+
+<hr>
+
+
+<p>
+<b>LATEST UPDATE</b>
+</p>
+
+
+<p>
+PES 2020 Agustus Update & PES 2021 July Update 2026 Available
+</p>
+
+
+
+<hr>
+
+
+<p>
+<b>CUSTOMER NOTICE</b>
+</p>
 
 
 <p>
 Produk hanya dapat diakses oleh email pembelian yang terdaftar.
 </p>
+
+
 <p style="color:#555;">
 
 <b>Catatan Google Drive Restricted:</b><br>
@@ -288,120 +357,292 @@ Produk hanya dapat diakses oleh email pembelian yang terdaftar.
 <script>
 
 
+/*
+========================================================
+MEMBERS
+1 EMAIL BISA MEMILIKI BANYAK PRODUK
+========================================================
+*/
+
+
 const members = {
 
-'venomphantom1@gmail.com':['PES 2021 Dual Mode 100 Legend','Winter 2027'],
-'irfantrisaputraa@gmail.com':['PES 2021 Dual Mode 300 Legend','Summer 2026'],
-'suhardycc@gmail.com':['PES 2021 Dual Mode 300 Legend','Winter 2027'],
-'siepkosigaming@gmail.com':['PES 2021 Dual Mode 500 Legend','Winter 2027'],
-'kennybasuki@gmail.com':['PES 2021 Full Edition V2','Winter 2027'],
-'arenacpt2a@gmail.com':['PES 2021 Super Option File 3.0','Winter 2027'],
-'falehendra@gmail.com':['PES 2021 Super Option File 3.0','Winter 2027'],
-'hobbypspekanbaru@gmail.com':['PES 2021 Super Option File 3.0','Winter 2027'],
-'trihaldyka@gmail.com':['PES 2021 Super Option File 3.0','Summer 2026'],
-'mey.4ndriansyah@gmail.com':['PES 2021 Super Option File 3.0','Winter 2027'],
-'babyboomers30@gmail.com':['PES 2021 Super Option File 3.0','Winter 2027'],
-'farchan.nuary@gmail.com':['PES 2021 Super Option File 3.0','Winter 2027'],
-'bambangboyanggriawan@gmail.com':['PES 2021 Super Option File 3.0','Winter 2027'],
-'alvincandra48@gmail.com':['PES 2021 Dual Mode 300 Legend','Winter 2027'],
-'abdillahputraammar9.3@gmail.com':['PES 2021 Dual Mode 500 Legend','Winter 2027'],
-'fishdipta@gmail.com':['PES 2021 Super Option File 1.0','Winter 2027'],
-'merzaryo@gmail.com':['PES 2021 Super Option File 1.0','Winter 2027'],
-'yudhawiraghupta76@gmail.com':['PES 2021 Super Option File 1.0','Winter 2027'],
-'ahfizgaidamaulana@gmail.com':['PES 2021 Super Option File 3.0','Winter 2027'],
-'bagus.saputra2118@gmail.com':['PES 2021 Super Option File 3.0','Winter 2027'],
-'tripleagamecenter@gmail.com':['PES 2021 Dual Mode 100 Legend','Winter 2027'],
-'alieea698@gmail.com':['PES 2021 Super Option File 3.0','Winter 2027'],
-'satria.ndaa@gmail.com':['PES 2021 Super Option File 3.0','Winter 2027'],
-'iffanmuhammad1@gmail.com':['PES 2021 Full Edition V2','Winter 2027'],
-'heruhuang4@gmail.com':['PES 2021 Super Option File 3.0','Winter 2027'],
-'bastengaming@gmail.com':['PES 2021 Dual Mode 500 Legend','Winter 2027'],
-'bastengaming@gmail.com':['PES 2020 Dual Mode 300 Legend','Winter 2027'],
-'fikriibrahimovic9@gmail.com':['PES 2021 Full Edition V2','Winter 2027'],
-'arifpratama7198@gmail.com':['PES 2021 Dual Mode 500 Legend','Winter 2027'],
-'mariopasuloi75@gmail.com':['PES 2021 Dual Mode 300 Legend','Winter 2027'],
-'eidel.wizurai7@gmail.com':['PES 2021 Dual Mode 100 Legend','Winter 2027'],
-'kriznamaha@gmail.com':['PES 2020 Dual Mode 300 Legend','Winter 2027'],
-'skyresidence2024@gmail.com':['PES 2021 Super Option File 1.0','Winter 2027'],
-'bambangboyanggriawan@gmail.com':['PES 2020 Super Option File 3.0','Winter 2027'],
-'shyes86@gmail.com':['PES 2020 Super Option File 3.0','Winter 2027'],
-'danuelits@gmail.com':['PES 2020 Full Edition V3','Winter 2027'],
-'diwancendawa300@gmail.com':['PES 2021 Dual Mode 60 Legend','Winter 2027'],
-'andersonreynold@gmail.com':['PES 2021 Super Option File 1.0','Winter 2027'],
-'darman161293@gmail.com':['PES 2021 Super Option File 1.0','Winter 2027'],
-'ryancorps24@gmail.com':['PES 2020 Dual Mode 100 Legend','Winter 2027'],
-'suyadi8822@gmail.com':['PES 2020 Full Edition V3','Winter 2027'],
-'datunsendawar@gmail.com':['PES 2021 Dual Mode 100 Legend','Winter 2027'],
-'chintia09031996@gmail.com':['PES 2021 Dual Mode 500 Legend','Winter 2027'],
-'saparifalentino@gmail.com':['PES 2020 Super Option File 3.0','Winter 2027'],
+
+'venomphantom1@gmail.com':[
+['PES 2021 Dual Mode 100 Legend','Winter 2027']
+],
+
+
+'irfantrisaputraa@gmail.com':[
+['PES 2021 Dual Mode 300 Legend','Summer 2026']
+],
+
+
+'suhardycc@gmail.com':[
+['PES 2021 Dual Mode 300 Legend','Winter 2027']
+],
+
+
+'siepkosigaming@gmail.com':[
+['PES 2021 Dual Mode 500 Legend','Winter 2027']
+],
+
+
+'kennybasuki@gmail.com':[
+['PES 2021 Full Edition V2','Winter 2027']
+],
+
+
+'arenacpt2a@gmail.com':[
+['PES 2021 Super Option File 3.0','Winter 2027']
+],
+
+
+'falehendra@gmail.com':[
+['PES 2021 Super Option File 3.0','Winter 2027']
+],
+
+
+'hobbypspekanbaru@gmail.com':[
+['PES 2021 Super Option File 3.0','Winter 2027']
+],
+
+
+'trihaldyka@gmail.com':[
+['PES 2021 Super Option File 3.0','Summer 2026']
+],
+
+
+'mey.4ndriansyah@gmail.com':[
+['PES 2021 Super Option File 3.0','Winter 2027']
+],
+
+
+'babyboomers30@gmail.com':[
+['PES 2021 Super Option File 3.0','Winter 2027']
+],
+
+
+'farchan.nuary@gmail.com':[
+['PES 2021 Super Option File 3.0','Winter 2027']
+],
+
+
+'bambangboyanggriawan@gmail.com':[
+['PES 2021 Super Option File 3.0','Winter 2027'],
+['PES 2020 Super Option File 3.0','Winter 2027']
+],
+
+
+'alvincandra48@gmail.com':[
+['PES 2021 Dual Mode 300 Legend','Winter 2027']
+],
+
+
+'abdillahputraammar9.3@gmail.com':[
+['PES 2021 Dual Mode 500 Legend','Winter 2027']
+],
+
+
+'fishdipta@gmail.com':[
+['PES 2021 Super Option File 1.0','Winter 2027']
+],
+
+
+'merzaryo@gmail.com':[
+['PES 2021 Super Option File 1.0','Winter 2027']
+],
+
+
+'yudhawiraghupta76@gmail.com':[
+['PES 2021 Super Option File 1.0','Winter 2027']
+],
+
+
+'ahfizgaidamaulana@gmail.com':[
+['PES 2021 Super Option File 3.0','Winter 2027']
+],
+
+
+'bagus.saputra2118@gmail.com':[
+['PES 2021 Super Option File 3.0','Winter 2027']
+],
+
+
+'tripleagamecenter@gmail.com':[
+['PES 2021 Dual Mode 100 Legend','Winter 2027']
+],
+
+
+'alieea698@gmail.com':[
+['PES 2021 Super Option File 3.0','Winter 2027']
+],
+
+
+'satria.ndaa@gmail.com':[
+['PES 2021 Super Option File 3.0','Winter 2027']
+],
+
+
+'iffanmuhammad1@gmail.com':[
+['PES 2021 Full Edition V2','Winter 2027']
+],
+
+
+'heruhuang4@gmail.com':[
+['PES 2021 Super Option File 3.0','Winter 2027']
+],
+
+
+/*
+========================================================
+TEST EMAIL
+1 EMAIL = 2 PRODUCTS
+========================================================
+*/
+
+
+'bastengaming@gmail.com':[
+['PES 2021 Dual Mode 500 Legend','Winter 2027'],
+['PES 2020 Dual Mode 300 Legend','Winter 2027']
+],
+
+
+'fikriibrahimovic9@gmail.com':[
+['PES 2021 Full Edition V2','Winter 2027']
+],
+
+
+'arifpratama7198@gmail.com':[
+['PES 2021 Dual Mode 500 Legend','Winter 2027']
+],
+
+
+'mariopasuloi75@gmail.com':[
+['PES 2021 Dual Mode 300 Legend','Winter 2027']
+],
+
+
+'eidel.wizurai7@gmail.com':[
+['PES 2021 Dual Mode 100 Legend','Winter 2027']
+],
+
+
+'kriznamaha@gmail.com':[
+['PES 2020 Dual Mode 300 Legend','Winter 2027']
+],
+
+
+'skyresidence2024@gmail.com':[
+['PES 2021 Super Option File 1.0','Winter 2027']
+],
+
+
+'shyes86@gmail.com':[
+['PES 2020 Super Option File 3.0','Winter 2027']
+],
+
+
+'danuelits@gmail.com':[
+['PES 2020 Full Edition V3','Winter 2027']
+],
+
+
+'diwancendawa300@gmail.com':[
+['PES 2021 Dual Mode 60 Legend','Winter 2027']
+],
+
+
+'andersonreynold@gmail.com':[
+['PES 2021 Super Option File 1.0','Winter 2027']
+],
+
+
+'darman161293@gmail.com':[
+['PES 2021 Super Option File 1.0','Winter 2027']
+],
+
+
+'ryancorps24@gmail.com':[
+['PES 2020 Dual Mode 100 Legend','Winter 2027']
+],
+
+
+'suyadi8822@gmail.com':[
+['PES 2020 Full Edition V3','Winter 2027']
+],
+
+
+'datunsendawar@gmail.com':[
+['PES 2021 Dual Mode 100 Legend','Winter 2027']
+],
+
+
+'chintia09031996@gmail.com':[
+['PES 2021 Dual Mode 500 Legend','Winter 2027']
+],
+
+
+'saparifalentino@gmail.com':[
+['PES 2020 Super Option File 3.0','Winter 2027']
+]
+
 
 };
 
 
 
-// LINK DOWNLOAD BERDASARKAN VARIANT PRODUK
+/*
+========================================================
+DOWNLOAD LINKS
+========================================================
+*/
 
 
 const downloadLinks = {
 
 
 'PES 2021 Dual Mode 100 Legend':
-
 'https://drive.google.com/drive/folders/17ptAYZtAOor_fSP9pYeBPxaEgonIAP1U?usp=drive_link',
 
 
-
 'PES 2021 Dual Mode 300 Legend':
-
 'https://drive.google.com/drive/folders/1A6Yy02TgkOMXtdhiLAXJYYn260YgsUrm?usp=drive_link',
 
 
-
 'PES 2021 Dual Mode 500 Legend':
-
 'https://drive.google.com/drive/folders/1fjoYbpSv656Jp664exR1ixJr1q4pqJtT?usp=drive_link',
 
 
-
 'PES 2021 Full Edition V2':
-
 'https://drive.google.com/drive/folders/1v07k84RxkU99_dZaE2iYiSdftxbtDzsq?usp=drive_link',
 
 
-
 'PES 2021 Super Option File 3.0':
-
 'https://drive.google.com/drive/folders/1-bdiJWV4KjMTrmZKYN5rycC82NPRbNn1?usp=drive_link',
 
 
-
 'PES 2021 Super Option File 1.0':
-
 'https://drive.google.com/drive/folders/164oD7IjHn744dkB3Zfq1RGYeEQOyVCiT?usp=drive_link',
 
 
 'PES 2020 Super Option File 3.0':
-
 'https://drive.google.com/drive/folders/1HM7bpHE75IM4kXP_c2uq6fS8f_4pmtWT?usp=drive_link',
 
 
 'PES 2020 Full Edition V3':
-
 'https://drive.google.com/drive/folders/1byLWu9nkWaOPCBhQntfQ-DvqoYB76Ged?usp=drive_link',
 
 
 'PES 2021 Dual Mode 60 Legend':
-
 'https://drive.google.com/drive/folders/12ur3HUCWDQBx7eVoss4lHk4ZZ53GThSF?usp=drive_link',
 
 
 'PES 2020 Dual Mode 100 Legend':
-
 'https://drive.google.com/drive/folders/12RiIgD6C9TVNe8ukbrzql19UOnWsn4wh?usp=drive_link',
 
 
 'PES 2020 Dual Mode 300 Legend':
-
 'https://drive.google.com/drive/folders/1STwwN4L-K5QAxeOvI-1aRze2rQ7n82FO?usp=drive_link'
 
 
@@ -409,54 +650,122 @@ const downloadLinks = {
 
 
 
+/*
+========================================================
+LOGIN FUNCTION
+========================================================
+*/
 
 
 function loginPortal(){
 
 
-const email=document.getElementById('email').value.trim().toLowerCase();
-
+const email =
+document.getElementById('email')
+.value
+.trim()
+.toLowerCase();
 
 
 if(!members[email]){
 
-
 alert('Email tidak terdaftar.');
 
-
 return;
-
 
 }
 
 
-
 document.getElementById('login').style.display='none';
 
-
 document.getElementById('portal').style.display='block';
-
-
 
 
 document.getElementById('userEmail').innerText=email;
 
 
-document.getElementById('userProduct').innerText=members[email][0];
+const products = members[email];
+
+const productList =
+document.getElementById('productList');
 
 
-document.getElementById('userValid').innerText=members[email][1];
+productList.innerHTML='';
 
 
+products.forEach((item,index)=>{
 
-document.getElementById('downloadLink').href =
 
-downloadLinks[members[email][0]];
+const product = item[0];
 
+const valid = item[1];
+
+const link = downloadLinks[product];
+
+
+const productCard =
+document.createElement('div');
+
+
+productCard.className='product-card';
+
+
+productCard.innerHTML = `
+
+<div class="product-title">
+
+PRODUCT ${index + 1}
+
+</div>
+
+
+<p>
+
+<b>${product}</b>
+
+</p>
+
+
+<p>
+
+<b>VALID UNTIL:</b>
+
+${valid}
+
+</p>
+
+
+${
+link
+?
+`
+<a
+class="download-button"
+href="${link}"
+target="_blank"
+rel="noopener noreferrer"
+>
+DOWNLOAD UPDATE GOOGLE DRIVE
+</a>
+`
+:
+`
+<p style="color:red;">
+Link download belum tersedia.
+</p>
+`
+}
+
+`;
+
+
+productList.appendChild(productCard);
+
+
+});
 
 
 }
-
 
 
 </script>
